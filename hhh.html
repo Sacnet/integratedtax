@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+{% block body %}
+<body>
+        {%for item in  individ%}
+          {{item}}<br>     
+           
+
+    {% endfor %}      
+        
+
+    {%for item in  users %}
+                <label>Title: </label>  {{item[1]}}<br>     
+                <label>Surname: </label>  {{item[2]}}<br>   
+                <label>Firstname: </label>  {{item[3]}}       
+        
+            {% endfor %}    
+            
+                <table class="table table-striped" width="200px">
+                    <tr>
+                        <th>Id</th>
+                        <th>Surname</th>
+                        <th>Type</th>
+                        <th>Salary Amount</th>
+                        <th>Tax Owned</th>
+                    </tr>
+                    {% for item in debttab %}
+                        
+                    <tr>
+                       
+                        <td>{{item}}</td>
+                        
+                      
+                    </tr>
+                        
+                    {% endfor %}
+                </table>    
+                    <li>
+                        {%for item in  debttab%}
+                    <label>Current Tax Owned: </label>
+                         {%for ind in item%}
+                           {{ind}}
+                         {%endfor%}
+                    {%endfor%}
+                    </li>
+                    <li>
+                        {%for item in  credittab%}
+                    <label>Amount in Account: </label>
+                         {%for ind in item%}
+                           {{ind}}
+                         {%endfor%}
+                    {%endfor%} 
+                    </li>
+                </ul>
+                
+        
+</body>
+{% endblock %}
+</html>

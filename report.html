@@ -1,0 +1,58 @@
+<!DOTYPE html>
+<html>
+    <head>
+        <meta charset="=utf-8">
+       
+        <title>Dashboard</title>
+        <meta name="viewport" content="width=device-width">
+        <meta name="keyword" content="Moses Work">
+        <meta name="author" content="Oyebade Isaac">
+        <link href= "{{ url_for('static', filename='css/style.css') }}" rel="stylesheet"/>
+        <link href= "{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet"/>
+        <link href= "{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet"/>
+    </head>
+    {% block body %}
+    <body>
+        <header >
+        
+                <div id="branding">
+                    <h1><span class="highlight">TGS</span> Tax Generation System</h1>
+                </div>
+                <nav>
+                    <ul>
+                        {% if session.logged_in %}
+                            
+                            
+                            <li style="padding-top:40px;"><a href="/logout/" >Logout</a></li>
+                        {%  else%}
+                            <li><a href="index.html" class="highlight">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="services.html">Programs</a></li>
+                            <li><a href="services.html">Communication</a></li>
+                            <li><a href="services.html">Contact Us</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+   
+        </header>
+        <section class="container2">
+            
+            <section class="container1a">
+                <div id="content4"></div>
+                        <legend style="color:rgb(46, 17, 211);">STAFF ACTION REPORT</legend>
+                        {%with messages = get_flashed_messages(with_categories=true)%}
+                        {%if messages%}
+                            {%for category, message in messages%}
+                                <div class="alert alert-{{category}}">
+                                    {{message}}
+                                </div>
+                            {%endfor%}
+                        {%endif%}
+                    {%endwith%}
+                </div>
+            </section>
+        
+    </body>
+    {% endblock %}
+</html>

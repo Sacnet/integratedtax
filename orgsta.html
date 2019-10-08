@@ -1,0 +1,82 @@
+<!DOTYPE html>
+<html>
+    <head>
+        <meta charset="=utf-8">
+       
+        <title>Home</title>
+        <meta name="viewport" content="width=device-width">
+        <meta name="keyword" content="Moses Work">
+        <meta name="author" content="Oyebade Isaac">
+        <link href= "{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet"/>
+        <link href= "{{ url_for('static', filename='css/jquery-ui.css') }}" rel="stylesheet"/>
+        <script src="{{ url_for('static', filename='js/boostrap.min.js') }}" ></script>
+        <script src="{{ url_for('static', filename='js/countries.js') }}" ></script>
+        <script src="{{ url_for('static', filename='js/jquery-3.js') }}" ></script>
+        <script src="{{ url_for('static', filename='js/jquery-ui.js') }}" ></script>
+        {% extends "bootstrap/base.html" %}
+        {% import "bootstrap/wtf.html" as wtf %}
+        {% block styles %}
+        {{ super()}}
+        <link href= "{{ url_for('static', filename='css/style.css') }}" rel="stylesheet"/>
+      {% endblock %}
+    </head>
+    {% block body %}
+    <body>
+        <header>
+            
+                <div id="branding">
+                    <h1><span class="highlight">TGS</span> Tax Generation System</h1>
+                </div>
+                <nav>
+                    <ul>
+                        {% if session.logged_in %}
+                        <li style="padding-top:40px;"><a href="/dashboard/" >Dashboard</a></li>
+                        <li style="padding-top:40px;"><a href="/logout/" >Logout</a></li>
+                            
+                        {%  else%}
+                            <li><a href="index.html" class="highlight">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="services.html">Programs</a></li>
+                            <li><a href="services.html">Communication</a></li>
+                            <li><a href="services.html">Contact Us</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>   
+        </header>
+        <section class="container1">
+            <div id="content2">
+                <legend style="color:rgb(46, 17, 211);">ORGANISATION INDIVIDUAL STAFF REGISTRATION PAGE</legend>
+                {%with messages = get_flashed_messages(with_categories=true)%}
+                {%if messages%}
+                    {%for category, message in messages%}
+                        <div class="alert alert-{{category}}">
+                            {{message}}
+                        </div>
+                    {%endfor%}
+                {%endif%}
+                {%endwith%}
+            <form id="login-form" action="/orgsta/" method=post style="margin-top: 30px;" class="">
+                {{ wtf.form_field(form.title) }}
+                {{ wtf.form_field(form.surname) }}
+                {{ wtf.form_field(form.firstname) }}
+                {{ wtf.form_field(form.lastname) }}
+                {{ wtf.form_field(form.phoneno) }}
+                {{ wtf.form_field(form.email) }}
+                {{ wtf.form_field(form.tin) }}
+                {{ wtf.form_field(form.accept_tos) }} 
+               
+               
+
+                
+                <button type="submit" class="btn btn-lg btn-primary btn block" style="margin-left: 0px; width:100%">REGISTER</button>
+            </form>
+            </div>
+        </section>
+        <footer class="container">
+
+        </footer>
+    </body>
+    {% endblock %}
+    
+</html>

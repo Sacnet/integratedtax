@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <meta charset="=utf-8">
+       
+        <title>Home</title>
+        <meta name="viewport" content="width=device-width">
+        <meta name="keyword" content="Moses Work">
+        <meta name="author" content="Oyebade Isaac">
+        <link href= "{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet"/>
+        
+    </head>
+</html>
+{% macro render_field(field) %}
+    <dt>{{ field.Label}}
+        <dd>
+            {{field(**kwargs) | safe }}
+            {% if field.errors %}
+            <ul class="errors">
+                {% for error in field.errors %}
+                <li>
+                    {{ error }}
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </dd>
+{% endmacro %} 

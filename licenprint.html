@@ -1,0 +1,54 @@
+<!DOTYPE html>
+<html>
+    <head>
+        <meta charset="=utf-8">
+       
+        <title>Home</title>
+        <meta name="viewport" content="width=device-width">
+        <meta name="keyword" content="Moses Work">
+        <meta name="author" content="Oyebade Isaac">
+        <link href= "{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet"/>
+        <link href= "{{ url_for('static', filename='css/style.css') }}" rel="stylesheet"/>
+        <script src="{{ url_for('static', filename='js/boostrap.min.js') }}" ></script>
+        
+    
+      
+        
+
+    </head>
+    {% block body %}
+    <body>
+        <div id="headar">
+            
+            <img src="/static/images/logo1.png" width="100px" height="120px" style="padding-top:20px; padding-left:30px; float:left;"/>
+            <img src="/static/images/logo2.jpg" width="130px" height="100px" style="padding-top:40px; padding-left:30px; float:right; padding-right: 20;"/>
+            <h2 style="padding-left:400px; padding-top:60px; color:#07033a;">LIBERIA REVENUE AUTHORITY</h2>
+        </div>
+        <section class="container1">
+            <div id="content4"></div>
+            <h2>Operation License Approved</h2>
+            <h4>Congratulations</h4>
+            <p style="text-align: justify; font-size: 18px;">   
+            
+             The license for {% for item in  licenseinfo %} <b>{{item[1]}}</b>{% endfor %} with Registration Number {% for item in  licenseinfo %}<b>{{item[13]}}</b>{% endfor %} located at {% for item in  licenseinfo %}<b>{{item[5]}}</b>{% endfor %} having satisfied the condition for operation has been approved on {% for item in  licenseinfo %} <b>{{item[14]}}</b> {% endfor %}. The Company Chief Executive Officer in person of {% for item in  licenseinfo %} <b>{{item[12]}}</b> {% endfor %}
+             should come to the Liberia Revenue Authority Headquarter Office for collection of original License Certificate for operation by coming with this document with original prove of identity as the CEO of the company. The new company is expected to commence payment of tax after one financial year.    
+            
+               
+            
+                
+                
+               
+                
+                
+     
+        
+                
+        
+            Once again, on behalf of the Liberia Revenue Authority Congratulation
+            </p>
+        </div>
+        </section>
+        
+    </body>
+    {% endblock%}
+</html>

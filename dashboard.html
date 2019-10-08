@@ -22,7 +22,7 @@
                     <ul>
                         {% if session.logged_in %}
                             
-                            <li style="padding-top:40px;"><a href="/dashed/" >Dashboard</a></li>
+                            <li style="padding-top:40px;"><a href="/dashboard/" >Dashboard</a></li>
                             <li style="padding-top:40px;"><a href="/logout/" >Logout</a></li>
                         {%  else%}
                             <li><a href="/" class="highlight">Home</a></li>
@@ -70,12 +70,10 @@
                 <hr>
                 <h3>Tax Payer Details</h3>
                 
-                    {%for item in  individ%}   
-                    <label>Organisation Name: </label>  {{item[1]}}<br>   
-                    <label>Location Address: </label>  {{item[6]}} <br>
-                    <label>Location Town: </label>  {{item[7]}}<br>     
-                    <label>Location County: </label>  {{item[8]}}<br>  
-                    <label>Username: </label>  {{item[9]}}  {{item[10]}}    
+                    {%for item in  individ%}
+                    <label>Title: </label>  {{item[1]}}<br>     
+                    <label>Surname: </label>  {{item[2]}}<br>   
+                    <label>Firstname: </label>  {{item[3]}}        
                          
                     {%endfor%}
                     <ul>

@@ -1,0 +1,84 @@
+<!DOTYPE html>
+<html>
+    <head>
+        <meta charset="=utf-8">
+       
+        <title>Dashboard</title>
+        <meta name="viewport" content="width=device-width">
+        <meta name="keyword" content="Moses Work">
+        <meta name="author" content="Oyebade Isaac">
+        <link href= "{{ url_for('static', filename='css/style.css') }}" rel="stylesheet"/>
+        <link href= "{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet"/>
+        <link href= "{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet"/>
+    </head>
+    {% block body %}
+    <body>
+        <header >
+        
+                <div id="branding">
+                    <h1><span class="highlight">TGS</span> Tax Generation System</h1>
+                </div>
+                <nav>
+                    <ul>
+                        {% if session.logged_in %}
+                            
+                            
+                            <li style="padding-top:40px;"><a href="/logout/" >Logout</a></li>
+                        {%  else%}
+                            <li><a href="index.html" class="highlight">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="services.html">Programs</a></li>
+                            <li><a href="services.html">Communication</a></li>
+                            <li><a href="services.html">Contact Us</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+   
+        </header>
+        <section class="container2">
+            
+            <section class="container1">
+                <div id="content4"></div>
+                        <legend style="color:rgb(46, 17, 211);">ORGANISATION REGISTERED STAFF LIST</legend>
+                <table class="table table-striped">
+                            <tr>
+                                <th>Id</th>
+                                <th>Title</th>
+                                <th>Surname</th>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                                <th>Phone No</th>
+                                <th>Email</th>
+                                <th></th>
+                            </tr>
+                            {% for item in  users %}
+                                
+                            <tr>
+                               
+                                <td>{{item[0]}}</td>
+                                <td>{{item[1]}}</td>
+                                <td>{{item[2]}}</td>
+                                <td>{{item[3]}}</td>
+                                <td>{{item[4]}}</td>
+                                <td>{{item[5]}}</td>
+                                <td>{{item[6]}}</td>
+                                <td>
+                                    <form action="{{url_for('delete_staf', id=item[0])}}" method="post">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="submit" class="btn btn-danger" value="Delete">
+                                    </form>
+
+                                </td>
+                                
+                               
+                            </tr>
+                                
+                            {% endfor %}
+                        </table>
+                </div>
+            </section>
+        
+    </body>
+    {% endblock %}
+</html>

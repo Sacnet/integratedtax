@@ -1,0 +1,53 @@
+<!DOTYPE html>
+<html>
+    <head>
+        <meta charset="=utf-8">
+       
+        <title>Home</title>
+        <meta name="viewport" content="width=device-width">
+        <meta name="keyword" content="Moses Work">
+        <meta name="author" content="Oyebade Isaac">
+        <link href= "{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet"/>
+        <link href= "{{ url_for('static', filename='css/style.css') }}" rel="stylesheet"/>
+        <link href= "{{ url_for('static', filename='css/style.css') }}" rel="stylesheet"/>
+        <script src="{{ url_for('static', filename='js/boostrap.min.js') }}" ></script>
+        
+        
+
+    </head>
+    {% block body %}
+    <body>
+        <header>
+            
+                <div id="branding">
+                    <h1><span class="highlight">TGS</span> Tax Generation System</h1>
+                </div>
+                <nav>
+                    <ul>
+                        {% if session.logged_in %}
+                        <li style="padding-top:40px;"><a href="/logout/" >Logout</a></li>
+                        <li style="padding-top:40px;"><a href="/dashboard/" >Dashboard</a></li>
+                        {%  else%}
+                            <li><a href="/" class="highlight">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="services.html">Programs</a></li>
+                            <li><a href="services.html">Communication</a></li>
+                            <li><a href="services.html">Contact Us</a></li>
+                        {% endif %}
+                    </ul>
+        </header>
+        <section class="container1">
+            <div id="content2">
+                    <legend style="color:rgb(46, 17, 211);">Business Account for Tax Generation and Payment</legend>
+                    <p style="padding-left:50px; padding-right:100px; text-align: justify;">The following Accounts link are used to create account for different business operation, click the one that is peculiar to your business operation. The links here are for individuals, organisation and other business premises that have obtained license for operation</p><br><br>
+                    <a href="/form1/" style="color: #130505; padding-top:50px; font-size: 30px; padding-left:150px;">Sole Proprietorship</a><br><br><br>
+                    <a href="/form3/" style="color: #130505; padding-top:50px; font-size: 30px; padding-left:150px;">Small and Medium Scale Business</a><br><br><br>
+                    <a href="/form2/" style="color: #130505; padding-top:50px; font-size: 30px; padding-left:150px;">Coporate Organisation</a><br><br><br>
+        </section>
+        <footer class="container">
+
+        </footer>
+    </body>
+    {% endblock%}
+</html>

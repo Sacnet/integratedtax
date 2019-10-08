@@ -22,10 +22,10 @@
                     <ul>
                         {% if session.logged_in %}
                             
-                            <li style="padding-top:40px;"><a href="/dashed/" >Dashboard</a></li>
+                            <li style="padding-top:40px;"><a href="/dashedboard/" >Dashboard</a></li>
                             <li style="padding-top:40px;"><a href="/logout/" >Logout</a></li>
                         {%  else%}
-                            <li><a href="/" class="highlight">Home</a></li>
+                            <li><a href="index.html" class="highlight">Home</a></li>
                             <li><a href="about.html">About Us</a></li>
                             <li><a href="services.html">Services</a></li>
                             <li><a href="services.html">Programs</a></li>
@@ -69,50 +69,49 @@
                 <h3>Dashboard</h3>
                 <hr>
                 <h3>Tax Payer Details</h3>
-                
-                    {%for item in  individ%}   
-                    <label>Organisation Name: </label>  {{item[1]}}<br>   
-                    <label>Location Address: </label>  {{item[6]}} <br>
-                    <label>Location Town: </label>  {{item[7]}}<br>     
-                    <label>Location County: </label>  {{item[8]}}<br>  
-                    <label>Username: </label>  {{item[9]}}  {{item[10]}}    
-                         
-                    {%endfor%}
-                    <ul>
-                        <li>
-                            {%for item in  credittab%}
-                        <label>Amount in Account: </label>
-                             {%for ind in item%}
-                               {{ind}}
-                             {%endfor%}
-                        {%endfor%} 
-                        </li>
-                    </ul>
-            
-                <table class="table table-striped" width="200px">
-                    <tr>
-                        <th>Id</th>
-                        <th>Surname</th>
-                        <th>Type</th>
-                        <th>Net Profit</th>
-                        <th>Tax Owned</th>
-                        <th>Date Next to Pay</th>
-                    </tr>
-                    {% for item in  debttab %}
-                        
-                    <tr>
-                       
-                        <td>{{item[0]}}</td>
-                        <td>{{item[1]}}</td>
-                        <td>{{item[2]}}</td>
-                        <td>{{item[3]}}</td>
-                        <td>{{item[4]}}</td>
-                        <td>{{item[6]}}</td>
-                    </tr>
-                        
-                    {% endfor %}
-                </table>    
+                {%for item in  individ%}   
+                <label>Organisation Name: </label>  {{item[1]}}<br>   
+                <label>Location Address: </label>  {{item[6]}} <br>
+                <label>Location Town: </label>  {{item[7]}}<br>     
+                <label>Location County: </label>  {{item[8]}}<br>  
+                <label>Username: </label>  {{item[9]}}  {{item[10]}}    
+                     
+                {%endfor%}
+                <ul>
+                    <li>
+                        {%for item in  credittab%}
+                    <label>Amount in Account: </label>
+                         {%for ind in item%}
+                           {{ind}}
+                         {%endfor%}
+                    {%endfor%} 
+                    </li>
+                </ul>
+        
+            <table class="table table-striped" width="200px">
+                <tr>
+                    <th>Id</th>
+                    <th>Surname</th>
+                    <th>Type</th>
+                    <th>Net Profit</th>
+                    <th>Tax Owned</th>
+                    <th>Date Next to Pay</th>
+                </tr>
+                {% for item in  debttab %}
+                    
+                <tr>
                    
+                    <td>{{item[0]}}</td>
+                    <td>{{item[1]}}</td>
+                    <td>{{item[2]}}</td>
+                    <td>{{item[3]}}</td>
+                    <td>{{item[4]}}</td>
+                    <td>{{item[6]}}</td>
+                </tr>
+                    
+                {% endfor %}
+            </table>    
+               
                 
                 
             </div>

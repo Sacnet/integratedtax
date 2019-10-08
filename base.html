@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    
+</body>
+</html>
+
+{%with messages = get_flashed_messages(with_categories=true)%}
+{%if messages%}
+    {%for category, message in messages%}
+        <div class="alert alert-{{category}}">
+            {{message}}
+        </div>
+    {%endfor%}
+{%endif%}
+{%endwith%}
+put it on top of your layout. and dont forget to add this in your code
+if form.validate_on_submit():
+        flash(f'Account for {form.username.data} created successfully','success')
+        return redirect(url_for('index'))

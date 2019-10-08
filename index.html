@@ -1,0 +1,62 @@
+<!DOTYPE html>
+<html>
+    <head>
+        <meta charset="=utf-8">
+       
+        <title>Home</title>
+        <meta name="viewport" content="width=device-width">
+        <meta name="keyword" content="Moses Work">
+        <meta name="author" content="Oyebade Isaac">
+        <link href= "{{ url_for('static', filename='css/style.css') }}" rel="stylesheet"/>
+        <link href= "{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet"/>
+        <link href= "{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet"/>
+    </head>
+    <body>
+        <header >
+                <img src="static/images/logo1.png" style="float:left; width:55px; height:55px;">
+                <div id="branding">
+                   
+                    <h1><span class="highlight">TGS</span> Tax Generation System</h1>
+                </div>
+                <nav>
+                    <ul>
+                        {% if session.logged_in %}
+                            <li ><a href="/logout/" >Logout</a></li>
+                        {%  else%}
+                            <li><a href="/" class="highlight">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="services.html">Programs</a></li>
+                            <li><a href="services.html">Communication</a></li>
+                            <li><a href="services.html">Contact Us</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+   
+        </header>
+        <section class="container2">
+            <div id="showcase">
+                <h4 style="color: #e8491d; padding-top:30px; padding-left: 20px;">License for Business Operation</h4>
+                <p style="color: #ffffff; text-align: justify; padding-left:20px; padding-right: 20px;">Obtain your License for Business operation today from the Liberia Revenue Authority for you to start up your business without harrassment. For details on how to obtain the license <a href="/licensepag/">Click Here</a></p>  
+                <img src="static/images/images4.jpg" style="float:left; width:100%; height:200px;">
+                <a href="/licenecopy/" style="color:#8be98f; padding-left:30px;">Print your Licensed ecopy here</a>
+            </div>
+            <div id="content1">
+                
+                <img src="static/images/content1.jpg"  width="100%" height="450px" style="border-radius: 5px;">
+                
+            </div>
+            <div id="con1">
+                <ul class="nav nav-pills" roll="tablist"></ul>
+                    <a href="/login" style="color: #130505"><button type="submit" class="btn btn-primary" aria-label="Left Align" style="width:80%; height:50px; border-radius:5px; margin-top:10px; margin-left:70px; color:#130505">LOGIN</button></a>
+                    <a href="/accountcre" style="color:#130505"><button type="button" class="btn btn-success" aria-label="Left Align" style="width:80%; height:50px; border-radius:5px; margin-top:15px; margin-left:70px; color:#19c58c">CREATE ACCOUNT</button></a>
+                </ul>
+            </div>
+        </section>
+        <footer class="container">
+                <img src="static/images/logo1.png" style="float:left; width:80px; height:60px;">
+                <img src="static/images/logo2.jpg" style="width:100px; height:60px;">
+                <img src="static/images/images.png" style="float:right; width:100px; height:60px;">
+        </footer>
+    </body>
+</html>

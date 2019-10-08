@@ -1,0 +1,83 @@
+<!DOTYPE html>
+<html>
+    <head>
+        <meta charset="=utf-8">
+       
+        <title>Home</title>
+        <meta name="viewport" content="width=device-width">
+        <meta name="keyword" content="Moses Work">
+        <meta name="author" content="Oyebade Isaac">
+        <link href= "{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet"/>
+        <link href= "{{ url_for('static', filename='css/style.css') }}" rel="stylesheet"/>
+        <link href= "{{ url_for('static', filename='css/style.css') }}" rel="stylesheet"/>
+        <script src="{{ url_for('static', filename='js/boostrap.min.js') }}" ></script>
+        
+        
+
+    </head>
+    {% block body %}
+    <body>
+        <header>
+                <img src="/static/images/logo1.png" style="float:left; width:55px; height:55px;">
+                <div id="branding">
+                    <h1><span class="highlight">TGS</span> Tax Generation System</h1>
+                </div>
+                <nav>
+                    <ul>
+                        {% if session.logged_in %}
+                            <li ><a href="/logout/" >Logout</a></li>
+                        {%  else%}
+                            <li><a href="/" class="highlight">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="services.html">Programs</a></li>
+                            <li><a href="services.html">Communication</a></li>
+                            <li><a href="services.html">Contact Us</a></li>
+                        {% endif %}
+                    </ul>
+        </header>
+        <section class="container1">
+            <div id="content2">
+                    <legend style="color:rgb(46, 17, 211);">LOGIN PAGE</legend>
+                    
+            <form action="/login/" style="margin-top: 80px;" method=post>
+                {%with messages = get_flashed_messages(with_categories=true)%}
+                    {%if messages%}
+                        {%for category, message in messages%}
+                            <div class="alert alert-{{category}}">
+                                {{message}}
+                            </div>
+                        {%endfor%}
+                    {%endif%}
+                {%endwith%}
+                <div class="form-group">
+                    <label>Individual Surname/Organisation Name</label>
+                    <input type="text" name="surname" class="form-control" value= {{ request.form.surname }}>
+                </div>
+                <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" name="username" class="form-control" value= {{ request.form.username }}>
+                </div>
+                <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" class="form-control" value= {{ request.form.password }}>
+                </div>
+               
+                
+
+                
+                <button type="submit" class="btn btn-primary" style="width:100%">LOGIN</button>
+            </form>
+            {% if error %}
+                <p class="error"><strong>Error:</strong>{{error}}</p>
+            {% endif %}
+            </div>
+        </section>
+        <footer class="container">
+                <img src="/static/images/logo1.png" style="float:left; width:80px; height:60px;">
+                <img src="/static/images/logo2.jpg" style="width:100px; height:60px;">
+                <img src="/static/images/images.png" style="float:right; width:100px; height:60px;">
+        </footer>
+    </body>
+    {% endblock%}
+</html>
