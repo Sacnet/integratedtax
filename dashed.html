@@ -1,0 +1,129 @@
+<!DOTYPE html>
+<html>
+    <head>
+        <meta charset="=utf-8">
+       
+        <title>Dashboard</title>
+        <meta name="viewport" content="width=device-width">
+        <meta name="keyword" content="Moses Work">
+        <meta name="author" content="Oyebade Isaac">
+        <link href= "{{ url_for('static', filename='css/style.css') }}" rel="stylesheet"/>
+        <link href= "{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet"/>
+        <link href= "{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet"/>
+    </head>
+    {% block body %}
+    <body>
+        <header >
+        
+                <div id="branding">
+                    <h1><span class="highlight">TGS</span> Tax Generation System</h1>
+                </div>
+                <nav>
+                    <ul>
+                        {% if session.logged_in %}
+                            
+                            <li style="padding-top:40px;"><a href="/dashboard/" >Dashboard</a></li>
+                            <li style="padding-top:40px;"><a href="/logout/" >Logout</a></li>
+                        {%  else%}
+                            <li><a href="index.html" class="highlight">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="services.html">Programs</a></li>
+                            <li><a href="services.html">Communication</a></li>
+                            <li><a href="services.html">Contact Us</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+   
+        </header>
+        <section class="container2">
+            
+            <div id="showcase1">
+                {%with messages = get_flashed_messages(with_categories=true)%}
+                    {%if messages%}
+                        {%for category, message in messages%}
+                            <div class="alert alert-{{category}}">
+                                {{message}}
+                            </div>
+                        {%endfor%}
+                    {%endif%}
+                {%endwith%}
+                <div id="show">
+                <ul>
+                    
+                    <li ><a href="/pinpayment/">Enter Payment Pin</a></li>
+                    <li ><a href="/taxent/">Tax Entry</a></li>
+                    <li ><a href="/payment/">Pay Tax</a></li>
+                    <li ><a href="/logout/">Tax Information</a></li>
+                    <li ><a href="/logout/" >Tax Obligation</a></li>
+                    <li ><a href="/orgsta/" >Register Staff</a></li>
+                    <li ><a href="/logout/" >View Staff</a></li>
+                    <li ><a href="/logout/" >Pin Payment Record</a></li>
+                    <li ><a href="/logout/">Payment Record</a></li>
+                    <li ><a href="/form4/">Asset Declaration</a></li>
+                    <li ><a href="/upload/">Upload Financial Report</a></li>
+                </ul> 
+                </div>  
+            </div>
+            <div id="content3">
+                <h3>Dashboard</h3>
+                <hr>
+                <h3>Tax Payer Details</h3>
+                <ul>
+                    <li>{%for item in  individ%}
+                    <label>Name: </label>
+                         {%for ind in item%}
+                           {{ind}}
+                         {%endfor%}
+                    {%endfor%}</li>
+                </ul>
+                <table class="table table-striped" width="200px">
+                    <tr>
+                        <th>Id</th>
+                        <th>Surname</th>
+                        <th>Type</th>
+                        <th>Salary Amount</th>
+                        <th>Tax Owned</th>
+                    </tr>
+                    {% for item in  debttab %}
+                        
+                    <tr>
+                        {% for ind in item %}
+                        <td>{{ ind["noSerial"] }}</td>
+                        <td>{{ ind["surname"] }}</td>
+                        <td>{{ ind["typeid"] }}</td>
+                        <td>{{ ind["amountent"] }}</td>
+                        <td>{{ ind["amount"] }}</td>
+                       {% endfor %}
+                    </tr>
+                        
+                    {% endfor %}
+                </table>    
+                    <li>
+                        {%for item in  debttab%}
+                    <label>Current Tax Owned: </label>
+                         {%for ind in item%}
+                           {{ind}}
+                         {%endfor%}
+                    {%endfor%}
+                    </li>
+                    <li>
+                        {%for item in  credittab%}
+                    <label>Amount in Account: </label>
+                         {%for ind in item%}
+                           {{ind}}
+                         {%endfor%}
+                    {%endfor%} 
+                    </li>
+                </ul>
+                
+                
+            </div>
+            
+        </section>
+        <footer class="container">
+
+        </footer>
+    </body>
+    {% endblock %}
+</html>
